@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual env
+env/
+venv/
+
+# Scrapy
+.scrapy/
+
+# Database / volumes
+*.sqlite
+*.db
+mongo_data/
+
+# Docker
+docker-compose.override.yml
