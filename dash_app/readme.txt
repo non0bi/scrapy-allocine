@@ -27,15 +27,7 @@ Docker Desktop installé et fonctionnel.
 Déploiement rapide : 
 -Cloner le répertoire.
 
--Démarrer l'infrastructure (Base de données + App Dash) :
-docker-compose up -d --build
-
-Lancer le scraper (pour peupler la base de données) :
-docker exec -it scrapy_allocine scrapy crawl allocine_films
-
-Accès à l'application: 
-
-Une fois les containers lancés, l'interface est accessible sur : http://localhost:8050 
+-lancer le fichier : launcher.bat
 
 #Fonctionnalités
 -Tableau Dynamique : Tri, filtrage et pagination.
