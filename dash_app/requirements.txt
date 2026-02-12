@@ -1,0 +1,4 @@
+dash
+pandas
+pymongo
+dash-bootstrap-components

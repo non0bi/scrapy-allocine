@@ -8,10 +8,28 @@ services:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.runCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   scrapy:
     build: ./scrapy_allocine
     container_name: scrapy_allocine
+    depends_on:
+      mongo:
+        condition: service_healthy
+    environment:
+      - MONGO_URI=mongodb://mongo:27017
+      - MONGO_DATABASE=allocine_db
+      - MONGO_COLLECTION=films
+
+  dash_app:
+    build: ./dash_app
+    container_name: dash_allocine
+    ports:
+      - "8050:8050"
     depends_on:
       - mongo
     environment:

@@ -7,8 +7,7 @@ import scrapy
 
 
 class ScrapyAllocineItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
+    # define the fields for your item:
     pass
 
 class FilmItem(scrapy.Item):
@@ -18,5 +17,4 @@ class FilmItem(scrapy.Item):
     genre = scrapy.Field()
     duree = scrapy.Field()
     date_sortie = scrapy.Field()
-    synopsis = scrapy.Field()
     url = scrapy.Field()
