@@ -13,10 +13,11 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    restart: always
 
   scrapy:
     build: ./scrapy_allocine
-    container_name: scrapy_allocine
+    container_name: scrapy_worker
     depends_on:
       mongo:
         condition: service_healthy
@@ -24,6 +25,8 @@ services:
       - MONGO_URI=mongodb://mongo:27017
       - MONGO_DATABASE=allocine_db
       - MONGO_COLLECTION=films
+    # Scrapy fait son job et s'arrête. On ne veut pas qu'il redémarre tout seul.
+    restart: "no"
 
   dash_app:
     build: ./dash_app
@@ -31,11 +34,13 @@ services:
     ports:
       - "8050:8050"
     depends_on:
-      - mongo
+      mongo:
+        condition: service_healthy
     environment:
       - MONGO_URI=mongodb://mongo:27017
       - MONGO_DATABASE=allocine_db
       - MONGO_COLLECTION=films
+    restart: always
 
 volumes:
   mongo_data:
