@@ -25,7 +25,7 @@ services:
       - MONGO_URI=mongodb://mongo:27017
       - MONGO_DATABASE=allocine_db
       - MONGO_COLLECTION=films
-    # Scrapy fait son job et s'arrête. On ne veut pas qu'il redémarre tout seul.
+    
     restart: "no"
 
   dash_app:
